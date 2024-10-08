@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lane Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        /* You can include these styles in your styles.css or keep them here */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .caption {
+            margin-top: 5px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery">
+        <table>
+            <thead>
+                <tr>
+                    <th>Before</th>
+                    <th>After</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for original, processed in image_pairs %}
+                <tr>
+                    <td>
+                        <div class="image-container">
+                            <img src="{{ url_for('static', filename='images/original/' + original) }}" alt="Original Image">
+                            <p class="caption">Before</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="image-container">
+                            <img src="{{ url_for('static', filename='images/processed/' + processed) }}" alt="Processed Image">
+                            <p class="caption">After</p>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
